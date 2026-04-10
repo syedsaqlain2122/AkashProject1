@@ -88,6 +88,15 @@ const PAGE_META = [
       primary: { label: 'Manually Trigger Payout', icon: 'refresh' },
     },
   },
+  {
+    path: '/wallet',
+    title: 'Wallet Overview',
+    subtitle: 'Manage your platform liquidity and payout reserves.',
+    actions: {
+      secondary: { label: 'Export Statement', icon: 'download', variant: 'outline' },
+      primary: { label: 'Initiate Payout', icon: 'plus' },
+    },
+  },
   { path: '/notifications', title: 'Notifications', subtitle: 'System and user notifications.' },
   { path: '/users', title: 'Users', subtitle: 'Manage users and roles.' },
   { path: '/settings', title: 'Settings', subtitle: 'Update your account preferences.' },
@@ -131,6 +140,8 @@ export default function AppShell() {
         ? 'Search transactions, payouts, or reports…'
       : location.pathname === '/payouts'
         ? 'Search payouts or practitioners…'
+      : location.pathname === '/wallet'
+        ? 'Search wallet movements…'
         : 'SEARCH RECORDS...'
 
   return (

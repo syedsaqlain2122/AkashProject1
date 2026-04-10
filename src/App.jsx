@@ -13,6 +13,7 @@ import SessionDetail from './pages/SessionDetail'
 import Revenue from './pages/Revenue'
 import Transactions from './pages/Transactions'
 import Payouts from './pages/Payouts'
+import Wallet from './pages/Wallet'
 import Notifications from './pages/Notifications'
 import Users from './pages/Users'
 import Settings from './pages/Settings'
@@ -37,6 +38,7 @@ function App() {
             <Route path="/revenue" element={<Revenue />} />
             <Route path="/transactions" element={<Transactions />} />
             <Route path="/payouts" element={<Payouts />} />
+            <Route path="/wallet" element={<Wallet />} />
             <Route path="/notifications" element={<Notifications />} />
             <Route path="/users" element={<Users />} />
             <Route path="/settings" element={<Settings />} />

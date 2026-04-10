@@ -11,6 +11,7 @@ import {
   Stethoscope,
   UserRound,
   Users,
+  Wallet,
   X,
 } from 'lucide-react'
 import { setAuthed } from '../auth/auth'
@@ -24,6 +25,7 @@ const nav = [
   { to: '/revenue', label: 'Revenue', icon: BarChart3 },
   { to: '/transactions', label: 'Transactions', icon: CreditCard },
   { to: '/payouts', label: 'Payouts', icon: HandCoins },
+  { to: '/wallet', label: 'Wallet', icon: Wallet },
   { to: '/notifications', label: 'Notifications', icon: Bell },
   { to: '/settings', label: 'Settings', icon: Settings },
 ]
