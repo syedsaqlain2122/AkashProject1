@@ -4,6 +4,7 @@ export default function Topbar({ title, subtitle, onOpenSidebar, actions, search
   const secondary = actions?.secondary
   const primary = actions?.primary
   const hasHeading = Boolean(title) || Boolean(subtitle)
+  const hasRow2 = hasHeading || Boolean(secondary) || Boolean(primary)
 
   return (
     <header className="sticky top-0 z-30 border-b border-[var(--figma-stroke)] bg-white/90 backdrop-blur">
@@ -52,31 +53,67 @@ export default function Topbar({ title, subtitle, onOpenSidebar, actions, search
         </div>
 
         {/* Row 2: title + actions */}
-        <div
-          className={[
-            'mt-6 flex items-start gap-4',
-            hasHeading ? 'justify-between' : 'justify-end',
-          ].join(' ')}
-        >
-          {hasHeading ? (
-            <div className="min-w-0">
-              {title ? (
-                <div className="truncate text-lg font-semibold text-[var(--figma-text-strong)] sm:text-xl">{title}</div>
+        {hasRow2 ? (
+          <div
+            className={[
+              'mt-6 flex items-start gap-4',
+              hasHeading ? 'justify-between' : 'justify-end',
+            ].join(' ')}
+          >
+            {hasHeading ? (
+              <div className="min-w-0">
+                {title ? (
+                  <div className="truncate text-lg font-semibold text-[var(--figma-text-strong)] sm:text-xl">{title}</div>
+                ) : null}
+                {subtitle ? (
+                  <div className="mt-0.5 line-clamp-1 text-sm text-[var(--figma-text-muted)]">{subtitle}</div>
+                ) : null}
+              </div>
+            ) : null}
+
+            <div className="hidden items-center gap-2 sm:flex">
+              {secondary ? (
+                <button
+                  type="button"
+                  onClick={secondary.onClick}
+                  className={[
+                    'inline-flex h-10 items-center justify-center gap-2 rounded-[8px] px-4 text-[11px] font-semibold tracking-[0.14em]',
+                    secondary.variant === 'outline'
+                      ? 'border border-[var(--figma-brand)] bg-white text-[var(--figma-brand)] hover:bg-[rgba(27,20,100,0.04)]'
+                      : 'bg-[#E3E2E0] text-[#1A1C1B] hover:brightness-[0.98]',
+                  ].join(' ')}
+                >
+                  {secondary.icon === 'download' ? <Download className="h-4 w-4" /> : null}
+                  {secondary.label}
+                </button>
               ) : null}
-              {subtitle ? (
-                <div className="mt-0.5 line-clamp-1 text-sm text-[var(--figma-text-muted)]">{subtitle}</div>
+              {primary ? (
+                <button
+                  type="button"
+                  onClick={primary.onClick}
+                  className="inline-flex h-10 items-center justify-center gap-2 rounded-[8px] bg-[var(--figma-brand)] px-4 text-[11px] font-semibold tracking-[0.14em] text-white shadow-[0_1px_2px_rgba(0,0,0,0.05)] hover:brightness-[0.98]"
+                >
+                  {primary.icon === 'plus' ? <Plus className="h-4 w-4" /> : null}
+                  {primary.label}
+                </button>
               ) : null}
             </div>
-          ) : null}
+          </div>
+        ) : null}
 
-          <div className="hidden items-center gap-2 sm:flex">
+        {secondary || primary ? (
+          <div className="mt-3 flex items-center gap-2 sm:hidden">
             {secondary ? (
               <button
                 type="button"
                 onClick={secondary.onClick}
-                className="inline-flex h-10 items-center justify-center gap-2 rounded-[8px] bg-[#E3E2E0] px-4 text-[11px] font-semibold tracking-[0.14em] text-[#1A1C1B] hover:brightness-[0.98]"
+                className={[
+                  'flex-1 rounded-[8px] px-4 py-2 text-[11px] font-semibold tracking-[0.14em]',
+                  secondary.variant === 'outline'
+                    ? 'border border-[var(--figma-brand)] bg-white text-[var(--figma-brand)]'
+                    : 'bg-[#E3E2E0] text-[#1A1C1B]',
+                ].join(' ')}
               >
-                {secondary.icon === 'download' ? <Download className="h-4 w-4" /> : null}
                 {secondary.label}
               </button>
             ) : null}
@@ -84,35 +121,13 @@ export default function Topbar({ title, subtitle, onOpenSidebar, actions, search
               <button
                 type="button"
                 onClick={primary.onClick}
-                className="inline-flex h-10 items-center justify-center gap-2 rounded-[8px] bg-[var(--figma-brand)] px-4 text-[11px] font-semibold tracking-[0.14em] text-white shadow-[0_1px_2px_rgba(0,0,0,0.05)] hover:brightness-[0.98]"
+                className="flex-1 rounded-[8px] bg-[var(--figma-brand)] px-4 py-2 text-[11px] font-semibold tracking-[0.14em] text-white"
               >
-                {primary.icon === 'plus' ? <Plus className="h-4 w-4" /> : null}
                 {primary.label}
               </button>
             ) : null}
           </div>
-        </div>
-
-        <div className="mt-3 flex items-center gap-2 sm:hidden">
-          {secondary ? (
-            <button
-              type="button"
-              onClick={secondary.onClick}
-              className="flex-1 rounded-[8px] bg-[#E3E2E0] px-4 py-2 text-[11px] font-semibold tracking-[0.14em] text-[#1A1C1B]"
-            >
-              {secondary.label}
-            </button>
-          ) : null}
-          {primary ? (
-            <button
-              type="button"
-              onClick={primary.onClick}
-              className="flex-1 rounded-[8px] bg-[var(--figma-brand)] px-4 py-2 text-[11px] font-semibold tracking-[0.14em] text-white"
-            >
-              {primary.label}
-            </button>
-          ) : null}
-        </div>
+        ) : null}
       </div>
     </header>
   )

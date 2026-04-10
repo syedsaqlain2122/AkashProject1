@@ -9,6 +9,7 @@ import PractitionerVerification from './pages/PractitionerVerification'
 import Clients from './pages/Clients'
 import ClientDetail from './pages/ClientDetail'
 import Sessions from './pages/Sessions'
+import SessionDetail from './pages/SessionDetail'
 import Revenue from './pages/Revenue'
 import Transactions from './pages/Transactions'
 import Payouts from './pages/Payouts'
@@ -32,6 +33,7 @@ function App() {
             <Route path="/clients" element={<Clients />} />
             <Route path="/clients/:id" element={<ClientDetail />} />
             <Route path="/sessions" element={<Sessions />} />
+            <Route path="/sessions/:id" element={<SessionDetail />} />
             <Route path="/revenue" element={<Revenue />} />
             <Route path="/transactions" element={<Transactions />} />
             <Route path="/payouts" element={<Payouts />} />

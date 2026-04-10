@@ -49,9 +49,36 @@ const PAGE_META = [
     subtitle: '',
     actions: null,
   },
-  { path: '/sessions', title: 'Sessions', subtitle: 'Monitor sessions and scheduling.' },
-  { path: '/revenue', title: 'Revenue', subtitle: 'Review revenue performance and trends.' },
-  { path: '/transactions', title: 'Transactions', subtitle: 'Track payments and transaction history.' },
+  {
+    path: '/sessions',
+    title: 'Sessions',
+    subtitle: 'Monitor and manage all practitioner-client interactions.',
+    actions: {
+      secondary: { label: 'Export List', icon: 'download', variant: 'outline' },
+      primary: { label: 'Manual Booking', icon: 'plus' },
+    },
+  },
+  {
+    path: '/sessions/:id',
+    title: '',
+    subtitle: '',
+    actions: null,
+  },
+  {
+    path: '/revenue',
+    title: '',
+    subtitle: '',
+    actions: null,
+  },
+  {
+    path: '/transactions',
+    title: 'Financial Ledger',
+    subtitle: 'Individual transactions, payouts, refunds, and settlement status.',
+    actions: {
+      secondary: { label: 'Export CSV', icon: 'download', variant: 'outline' },
+      primary: { label: 'Manual Entry', icon: 'plus' },
+    },
+  },
   { path: '/payouts', title: 'Payouts', subtitle: 'Manage payouts and settlement status.' },
   { path: '/notifications', title: 'Notifications', subtitle: 'System and user notifications.' },
   { path: '/users', title: 'Users', subtitle: 'Manage users and roles.' },
@@ -71,6 +98,10 @@ export default function AppShell() {
       return PAGE_META.find((m) => m.path === '/clients/:id') ?? { title: '', subtitle: '', actions: null }
     }
 
+    if (/^\/sessions\/[^/]+$/.test(pathname) && pathname !== '/sessions') {
+      return PAGE_META.find((m) => m.path === '/sessions/:id') ?? { title: '', subtitle: '', actions: null }
+    }
+
     if (/^\/practitioners\/[^/]+\/verification$/.test(pathname)) {
       return PAGE_META.find((m) => m.path === '/practitioners/:id/verification') ?? { title: '', subtitle: '', actions: null }
     }
@@ -84,9 +115,13 @@ export default function AppShell() {
 
   const searchPlaceholder = /^\/practitioners\/[^/]+\/verification$/.test(location.pathname)
     ? 'Search practitioners…'
+    : location.pathname === '/sessions' || /^\/sessions\/.+/.test(location.pathname)
+      ? 'Search sessions, users, or transactions…'
     : location.pathname === '/clients' || /^\/clients\/.+/.test(location.pathname)
       ? 'Search practitioners, clients, or transactions…'
-      : 'SEARCH RECORDS...'
+      : location.pathname === '/revenue' || location.pathname === '/transactions'
+        ? 'Search transactions, payouts, or reports…'
+        : 'SEARCH RECORDS...'
 
   return (
     <div className="min-h-dvh bg-[var(--figma-app-bg)] text-[var(--figma-text)]">
