@@ -1,4 +1,4 @@
-import { Bell, CircleHelp, Download, Menu, Plus, Search } from 'lucide-react'
+import { Bell, CircleHelp, Download, Menu, Plus, RefreshCw, Search } from 'lucide-react'
 
 export default function Topbar({ title, subtitle, onOpenSidebar, actions, searchPlaceholder = 'SEARCH RECORDS...' }) {
   const secondary = actions?.secondary
@@ -94,6 +94,7 @@ export default function Topbar({ title, subtitle, onOpenSidebar, actions, search
                   className="inline-flex h-10 items-center justify-center gap-2 rounded-[8px] bg-[var(--figma-brand)] px-4 text-[11px] font-semibold tracking-[0.14em] text-white shadow-[0_1px_2px_rgba(0,0,0,0.05)] hover:brightness-[0.98]"
                 >
                   {primary.icon === 'plus' ? <Plus className="h-4 w-4" /> : null}
+                  {primary.icon === 'refresh' ? <RefreshCw className="h-4 w-4" /> : null}
                   {primary.label}
                 </button>
               ) : null}

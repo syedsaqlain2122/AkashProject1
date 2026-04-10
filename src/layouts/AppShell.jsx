@@ -79,7 +79,15 @@ const PAGE_META = [
       primary: { label: 'Manual Entry', icon: 'plus' },
     },
   },
-  { path: '/payouts', title: 'Payouts', subtitle: 'Manage payouts and settlement status.' },
+  {
+    path: '/payouts',
+    title: 'Payouts',
+    subtitle: 'Manage and reconcile practitioner distributions.',
+    actions: {
+      secondary: { label: 'Download Payout Report', icon: 'download' },
+      primary: { label: 'Manually Trigger Payout', icon: 'refresh' },
+    },
+  },
   { path: '/notifications', title: 'Notifications', subtitle: 'System and user notifications.' },
   { path: '/users', title: 'Users', subtitle: 'Manage users and roles.' },
   { path: '/settings', title: 'Settings', subtitle: 'Update your account preferences.' },
@@ -121,6 +129,8 @@ export default function AppShell() {
       ? 'Search practitioners, clients, or transactions…'
       : location.pathname === '/revenue' || location.pathname === '/transactions'
         ? 'Search transactions, payouts, or reports…'
+      : location.pathname === '/payouts'
+        ? 'Search payouts or practitioners…'
         : 'SEARCH RECORDS...'
 
   return (
