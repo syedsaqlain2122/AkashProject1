@@ -1,6 +1,7 @@
 import { useMemo } from 'react'
-import { useNavigate, useParams } from 'react-router-dom'
+import { Link, useNavigate, useParams } from 'react-router-dom'
 import { BadgeCheck, GraduationCap, CheckCircle2 } from 'lucide-react'
+import { getPractitionerListName, getPractitionerProfile } from '../data/practitionerData'
 
 function pillClass(kind) {
   switch (kind) {
@@ -51,185 +52,8 @@ export default function PractitionerDetail() {
   const { id } = useParams()
   const navigate = useNavigate()
 
-  const data = useMemo(() => {
-    // In a real app, fetch by id. For now, use per-practitioner mock profiles.
-    const PROFILES = {
-      'elena-rodriguez': {
-        name: 'Elena Rodriguez, PhD',
-        idLabel: 'PRAC-99283-ER',
-        joined: 'Oct 12, 2023',
-        status: 'Active',
-        bio:
-          'Dr. Rodriguez is a clinical psychologist specializing in holistic wellness and somatic therapy. With over 15 years of experience, she integrates traditional psychotherapeutic techniques with mindfulness and body-centered approaches to help clients manage anxiety and professional burnout.',
-        specialties: ['Somatic Therapy', 'CBT', 'Mindfulness'],
-        price: 85,
-        education: [
-          { title: 'PhD in Clinical Psychology', meta: 'Stanford University • 2012' },
-          { title: 'MS in Behavioral Science', meta: 'University of Pennsylvania • 2008' },
-        ],
-        certifications: ['Board Certified Clinical Psychologist', 'Holistic Wellness Practitioner (HWP)'],
-        performance: { earnings: 42904.5, sessions: 512, rating: 4.9 },
-        vault: [
-          { name: 'Medical License.pdf', meta: 'Updated Oct 2023', status: 'Verified' },
-          { name: 'Liability Insurance.pdf', meta: 'Exp: Jan 2025', status: 'Verified' },
-        ],
-        reviews: [
-          { stars: 5, quote: 'Dr. Elena is incredibly perceptive and has helped me navigate high-stress periods…', meta: 'Client ID: 8219 • 2 days ago' },
-          { stars: 5, quote: 'Grounded, compassionate, and practical. The sessions feel structured but warm.', meta: 'Client ID: 6401 • 2 weeks ago' },
-        ],
-        recentSessions: [
-          { client: 'Marcus Aurelius', date: 'Mar 24, 2024', type: 'Virtual Therapy', fee: 85, status: 'Completed' },
-          { client: 'Julia Domna', date: 'Mar 22, 2024', type: 'Introductory Call', fee: 45, status: 'Completed' },
-          { client: 'Septimius Severus', date: 'Mar 21, 2024', type: 'Virtual Therapy', fee: 85, status: 'Cancelled' },
-        ],
-      },
-      'james-sterling': {
-        name: 'James T. Sterling, LCSW',
-        idLabel: 'PRAC-41022-JS',
-        joined: 'Feb 03, 2024',
-        status: 'Pending',
-        bio:
-          'James is a licensed clinical social worker focused on evidence-based therapy for anxiety and relationship conflict. He is currently completing onboarding verification for the Akash network.',
-        specialties: ['CBT', 'Attachment', 'Stress Management'],
-        price: 150,
-        education: [
-          { title: 'MSW, Clinical Track', meta: 'Columbia University • 2017' },
-          { title: 'BA in Psychology', meta: 'University of Michigan • 2014' },
-        ],
-        certifications: ['Licensed Clinical Social Worker (LCSW)', 'Gottman Method (Level 1)'],
-        performance: { earnings: 0, sessions: 0, rating: 0 },
-        vault: [
-          { name: 'License Verification.pdf', meta: 'Submitted Feb 2024', status: 'Pending' },
-          { name: 'Background Check.pdf', meta: 'Submitted Feb 2024', status: 'Pending' },
-        ],
-        reviews: [],
-        recentSessions: [],
-      },
-      'sarah-alfayed': {
-        name: 'Sarah Al-Fayed, CNC',
-        idLabel: 'PRAC-77810-SA',
-        joined: 'Jul 19, 2023',
-        status: 'Active',
-        bio:
-          'Sarah is a certified nutrition coach specializing in metabolic health and sustainable habits. She blends pragmatic nutrition planning with behavioral coaching to support long-term change.',
-        specialties: ['Holistic Nutrition', 'Metabolic Health', 'Habit Coaching'],
-        price: 45,
-        education: [
-          { title: 'Certified Nutrition Coach (CNC)', meta: 'Precision Nutrition • 2021' },
-          { title: 'BS in Public Health', meta: 'University of Washington • 2018' },
-        ],
-        certifications: ['Precision Nutrition Level 1', 'Health Coach Certification (NBHWC)'],
-        performance: { earnings: 12640.0, sessions: 312, rating: 4.7 },
-        vault: [
-          { name: 'Certification.pdf', meta: 'Updated Aug 2023', status: 'Verified' },
-        ],
-        reviews: [
-          { stars: 5, quote: 'Simple plans that actually fit my schedule. Great accountability.', meta: 'Client ID: 2894 • 6 days ago' },
-        ],
-        recentSessions: [
-          { client: 'Aisha Khan', date: 'Mar 28, 2024', type: 'Nutrition Follow-up', fee: 45, status: 'Completed' },
-          { client: 'Daniel Kim', date: 'Mar 25, 2024', type: 'Initial Intake', fee: 65, status: 'Completed' },
-        ],
-      },
-      'mark-chen': {
-        name: 'Mark Chen, RYT-500',
-        idLabel: 'PRAC-55091-MC',
-        joined: 'Nov 08, 2022',
-        status: 'Suspended',
-        bio:
-          'Mark is a yoga and meditation instructor with a focus on recovery and resilience. This account is currently suspended pending compliance review.',
-        specialties: ['Yoga Therapy', 'Meditation', 'Breathwork'],
-        price: 80,
-        education: [
-          { title: 'Yoga Teacher Training (500hr)', meta: 'Kripalu Center • 2019' },
-          { title: 'Mindfulness-Based Stress Reduction', meta: 'UMass Center for Mindfulness • 2020' },
-        ],
-        certifications: ['RYT-500', 'MBSR Teacher (Candidate)'],
-        performance: { earnings: 3960.0, sessions: 72, rating: 3.2 },
-        vault: [
-          { name: 'Insurance.pdf', meta: 'Expired Jan 2025', status: 'Pending' },
-        ],
-        reviews: [
-          { stars: 3, quote: 'Great sessions, but scheduling has been inconsistent lately.', meta: 'Client ID: 1042 • 1 month ago' },
-        ],
-        recentSessions: [
-          { client: 'Priya Nair', date: 'Feb 15, 2024', type: 'Guided Meditation', fee: 30, status: 'Completed' },
-          { client: 'Luis Gomez', date: 'Feb 09, 2024', type: 'Yoga (Virtual)', fee: 80, status: 'Cancelled' },
-        ],
-      },
-      'emma-thompson': {
-        name: 'Emma Thompson, LMT',
-        idLabel: 'PRAC-66304-ET',
-        joined: 'May 27, 2023',
-        status: 'Active',
-        bio:
-          'Emma is a licensed massage therapist specializing in sports recovery and chronic tension. She uses a client-first approach and integrates mobility education into recovery plans.',
-        specialties: ['Massage Therapy', 'Sports Recovery', 'Mobility'],
-        price: 90,
-        education: [
-          { title: 'Diploma in Massage Therapy', meta: 'Cortiva Institute • 2016' },
-        ],
-        certifications: ['Licensed Massage Therapist (LMT)', 'CPR/AED'],
-        performance: { earnings: 18900.0, sessions: 210, rating: 4.8 },
-        vault: [
-          { name: 'License.pdf', meta: 'Updated May 2023', status: 'Verified' },
-          { name: 'Insurance.pdf', meta: 'Exp: Dec 2024', status: 'Verified' },
-        ],
-        reviews: [
-          { stars: 5, quote: 'Best recovery work I’ve had—felt a difference after the first session.', meta: 'Client ID: 7710 • 4 days ago' },
-          { stars: 5, quote: 'Professional, attentive, and very skilled.', meta: 'Client ID: 1148 • 3 weeks ago' },
-        ],
-        recentSessions: [
-          { client: 'Noah Patel', date: 'Mar 30, 2024', type: 'Sports Massage', fee: 90, status: 'Completed' },
-          { client: 'Sofia Rossi', date: 'Mar 27, 2024', type: 'Deep Tissue', fee: 100, status: 'Completed' },
-          { client: 'Ethan Brooks', date: 'Mar 19, 2024', type: 'Recovery Session', fee: 90, status: 'Completed' },
-        ],
-      },
-      'robert-hyland': {
-        name: 'Robert Hyland',
-        idLabel: 'PRAC-29017-RH',
-        joined: 'Jan 14, 2022',
-        status: 'Inactive',
-        bio:
-          'Robert is a breathwork facilitator emphasizing practical tools for emotional regulation. This profile is currently inactive.',
-        specialties: ['Breathwork', 'Nervous System Regulation'],
-        price: 50,
-        education: [
-          { title: 'Breathwork Facilitator Training', meta: 'Alchemy of Breath • 2020' },
-        ],
-        certifications: ['Breathwork Facilitator', 'Trauma-Informed Coaching'],
-        performance: { earnings: 2100.0, sessions: 42, rating: 4.5 },
-        vault: [
-          { name: 'Certification.pdf', meta: 'Updated Jan 2022', status: 'Verified' },
-        ],
-        reviews: [
-          { stars: 5, quote: 'The breathing techniques were immediately helpful for my anxiety.', meta: 'Client ID: 3009 • 2 months ago' },
-        ],
-        recentSessions: [
-          { client: 'Mina Lee', date: 'Dec 12, 2023', type: 'Breathwork', fee: 50, status: 'Completed' },
-        ],
-      },
-    }
-
-    const fallbackName = id ? String(id).split('-').map((p) => p[0]?.toUpperCase() + p.slice(1)).join(' ') : 'Practitioner'
-    return (
-      PROFILES[id] ?? {
-        name: fallbackName,
-        idLabel: `PRAC-${String(id ?? 'UNKNOWN').toUpperCase()}`,
-        joined: '—',
-        status: 'Active',
-        bio: 'This practitioner profile is ready to be connected to real data.',
-        specialties: ['—'],
-        price: 0,
-        education: [],
-        certifications: [],
-        performance: { earnings: 0, sessions: 0, rating: 0 },
-        vault: [],
-        reviews: [],
-        recentSessions: [],
-      }
-    )
-  }, [id])
+  const data = useMemo(() => getPractitionerProfile(id), [id])
+  const displayName = getPractitionerListName(id) ?? data.name
 
   return (
     <div className="space-y-4">
@@ -245,10 +69,10 @@ export default function PractitionerDetail() {
               Practitioners
             </button>{' '}
             <span className="text-[var(--figma-text-muted)]">›</span>{' '}
-            <span className="text-[var(--figma-text-strong)]">{data.name}</span>
+            <span className="text-[var(--figma-text-strong)]">{displayName}</span>
           </div>
 
-          <div className="mt-2 truncate text-2xl font-semibold tracking-tight text-[var(--figma-text-strong)]">{data.name}</div>
+          <div className="mt-2 truncate text-2xl font-semibold tracking-tight text-[var(--figma-text-strong)]">{displayName}</div>
           <div className="mt-2 flex flex-wrap items-center gap-3 text-xs text-[var(--figma-text-muted)]">
             <span>
               <span className="font-semibold text-[var(--figma-text-muted)]">ID:</span> {data.idLabel}
@@ -285,7 +109,7 @@ export default function PractitionerDetail() {
           <div className="figma-card p-5 sm:p-6">
             <div className="grid grid-cols-1 gap-6 md:grid-cols-12">
               <div className="md:col-span-5">
-                <AvatarCard name={data.name} />
+                <AvatarCard name={displayName} />
               </div>
               <div className="md:col-span-7">
                 <div className="text-sm font-semibold text-[var(--figma-text-strong)]">Professional Biography</div>
@@ -481,6 +305,12 @@ export default function PractitionerDetail() {
           <div className="figma-card p-5 sm:p-6">
             <div className="text-[11px] font-semibold tracking-[0.16em] text-[var(--figma-text-muted)]">ADMINISTRATIVE CONTROL</div>
             <div className="mt-4 space-y-3">
+              <Link
+                to={`/practitioners/${id}/verification`}
+                className="inline-flex w-full items-center justify-center gap-2 rounded-[12px] border border-[var(--figma-stroke)] bg-white px-4 py-3 text-sm font-semibold text-[var(--figma-brand)] hover:bg-[rgba(244,243,241,0.7)]"
+              >
+                Open verification review
+              </Link>
               <button
                 type="button"
                 className="inline-flex w-full items-center justify-center gap-2 rounded-[12px] border border-[var(--figma-stroke)] bg-white px-4 py-3 text-sm font-semibold text-[var(--figma-text-strong)] hover:bg-[rgba(244,243,241,0.7)]"

@@ -1,6 +1,6 @@
 import { Bell, CircleHelp, Download, Menu, Plus, Search } from 'lucide-react'
 
-export default function Topbar({ title, subtitle, onOpenSidebar, actions }) {
+export default function Topbar({ title, subtitle, onOpenSidebar, actions, searchPlaceholder = 'SEARCH RECORDS...' }) {
   const secondary = actions?.secondary
   const primary = actions?.primary
   const hasHeading = Boolean(title) || Boolean(subtitle)
@@ -22,7 +22,7 @@ export default function Topbar({ title, subtitle, onOpenSidebar, actions }) {
           <div className="relative w-full flex-1 sm:max-w-[256px] sm:flex-none">
             <Search className="pointer-events-none absolute left-4 top-1/2 h-[18px] w-[18px] -translate-y-1/2 text-[var(--figma-text)]" />
             <input
-              placeholder="SEARCH RECORDS..."
+              placeholder={searchPlaceholder}
               className="h-[35px] w-full rounded border border-transparent bg-white pl-11 pr-4 text-[12px] font-medium tracking-wide text-[var(--figma-text)] placeholder:font-medium placeholder:tracking-wide placeholder:text-[rgba(71,69,81,0.5)] focus:outline-none focus:ring-2 focus:ring-[rgba(27,20,100,0.14)]"
             />
           </div>

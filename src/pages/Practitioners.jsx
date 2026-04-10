@@ -1,6 +1,9 @@
 import { useNavigate } from 'react-router-dom'
+import { practitionerListRows } from '../data/practitionerData'
 
 export default function Practitioners() {
+  const rows = practitionerListRows
+
   const kpis = [
     { label: 'Total active', value: '1,284', delta: '+12%' },
     { label: 'Avg. rating', value: '4.8', delta: '★' },
@@ -14,75 +17,6 @@ export default function Practitioners() {
     { id: 'pending', label: 'Pending', count: 42 },
     { id: 'suspended', label: 'Suspended', count: 18 },
     { id: 'inactive', label: 'Inactive', count: 58 },
-  ]
-
-  const rows = [
-    {
-      id: 'elena-rodriguez',
-      name: 'Dr. Elena Rodriguez',
-      email: 'elena.r@akash.life',
-      modalities: ['Acupuncture', 'Reiki'],
-      status: 'Active',
-      rating: 4.9,
-      sessions: 142,
-      earnings: 8520,
-      price: 120,
-    },
-    {
-      id: 'james-sterling',
-      name: 'James T. Sterling',
-      email: 'j.sterling@zenith.com',
-      modalities: ['CBT Therapy'],
-      status: 'Pending',
-      rating: null,
-      sessions: 0,
-      earnings: 0,
-      price: 150,
-    },
-    {
-      id: 'sarah-alfayed',
-      name: 'Sarah Al-Fayed',
-      email: 'sarah@akash.life',
-      modalities: ['Holistic Nutrition'],
-      status: 'Active',
-      rating: 4.7,
-      sessions: 88,
-      earnings: 3960,
-      price: 45,
-    },
-    {
-      id: 'mark-chen',
-      name: 'Mark Chen',
-      email: 'mark.c@flowstate.me',
-      modalities: ['Yoga', 'Meditation'],
-      status: 'Suspended',
-      rating: 3.2,
-      sessions: 12,
-      earnings: 960,
-      price: 80,
-    },
-    {
-      id: 'emma-thompson',
-      name: 'Emma Thompson',
-      email: 'emma@wellbeing.co',
-      modalities: ['Massage Therapy'],
-      status: 'Active',
-      rating: 4.8,
-      sessions: 210,
-      earnings: 18900,
-      price: 90,
-    },
-    {
-      id: 'robert-hyland',
-      name: 'Robert Hyland',
-      email: 'robert.h@outlook.com',
-      modalities: ['Breathwork'],
-      status: 'Inactive',
-      rating: 4.5,
-      sessions: 42,
-      earnings: 2100,
-      price: 50,
-    },
   ]
 
   return (

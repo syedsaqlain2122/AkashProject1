@@ -28,6 +28,12 @@ const PAGE_META = [
     subtitle: '',
     actions: null,
   },
+  {
+    path: '/practitioners/:id/verification',
+    title: '',
+    subtitle: '',
+    actions: null,
+  },
   { path: '/clients', title: 'Clients', subtitle: 'View client accounts and activity.' },
   { path: '/sessions', title: 'Sessions', subtitle: 'Monitor sessions and scheduling.' },
   { path: '/revenue', title: 'Revenue', subtitle: 'Review revenue performance and trends.' },
@@ -47,12 +53,20 @@ export default function AppShell() {
     const direct = PAGE_META.find((m) => m.path === pathname)
     if (direct) return direct
 
+    if (/^\/practitioners\/[^/]+\/verification$/.test(pathname)) {
+      return PAGE_META.find((m) => m.path === '/practitioners/:id/verification') ?? { title: '', subtitle: '', actions: null }
+    }
+
     if (pathname.startsWith('/practitioners/')) {
       return PAGE_META.find((m) => m.path === '/practitioners/:id') ?? { title: 'My Portal', subtitle: '' }
     }
 
     return { title: 'My Portal', subtitle: '' }
   }, [location.pathname])
+
+  const searchPlaceholder = /^\/practitioners\/[^/]+\/verification$/.test(location.pathname)
+    ? 'Search practitioners…'
+    : 'SEARCH RECORDS...'
 
   return (
     <div className="min-h-dvh bg-[var(--figma-app-bg)] text-[var(--figma-text)]">
@@ -67,6 +81,7 @@ export default function AppShell() {
               title={meta.title}
               subtitle={meta.subtitle}
               actions={meta.actions}
+              searchPlaceholder={searchPlaceholder}
               onOpenSidebar={() => setMobileSidebarOpen(true)}
             />
 

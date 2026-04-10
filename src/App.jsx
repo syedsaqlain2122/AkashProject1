@@ -5,6 +5,7 @@ import Login from './pages/Login'
 import Dashboard from './pages/Dashboard'
 import Practitioners from './pages/Practitioners'
 import PractitionerDetail from './pages/PractitionerDetail'
+import PractitionerVerification from './pages/PractitionerVerification'
 import Clients from './pages/Clients'
 import Sessions from './pages/Sessions'
 import Revenue from './pages/Revenue'
@@ -13,7 +14,7 @@ import Payouts from './pages/Payouts'
 import Notifications from './pages/Notifications'
 import Users from './pages/Users'
 import Settings from './pages/Settings'
-//ksahdkashld
+
 function App() {
   return (
     <BrowserRouter>
@@ -25,6 +26,7 @@ function App() {
           <Route element={<AppShell />}>
             <Route path="/dashboard" element={<Dashboard />} />
             <Route path="/practitioners" element={<Practitioners />} />
+            <Route path="/practitioners/:id/verification" element={<PractitionerVerification />} />
             <Route path="/practitioners/:id" element={<PractitionerDetail />} />
             <Route path="/clients" element={<Clients />} />
             <Route path="/sessions" element={<Sessions />} />
