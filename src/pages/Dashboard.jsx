@@ -245,25 +245,25 @@ function KpiCard4Svg() {
 
 function Dashboard() {
   return (
-    <div className="space-y-6">
-      {/* KPI cards */}
-      <section className="grid grid-cols-1 gap-3 sm:grid-cols-2 sm:gap-4 lg:grid-cols-4">
-        <div className="relative mx-auto w-full max-w-[420px] overflow-hidden rounded-[12px] sm:max-w-none lg:mx-0 lg:max-w-none lg:rounded-none">
+    <div className="space-y-4">
+      {/* KPI cards — equal columns + uniform gap; sm+ cards fill cell width (no mx-auto) */}
+      <section className="grid grid-cols-1 gap-4 sm:grid-cols-2 lg:grid-cols-4 [&>*]:min-w-0">
+        <div className="relative mx-auto w-full max-w-[420px] overflow-hidden rounded-[12px] sm:mx-0 sm:max-w-none lg:rounded-none">
           <div className="relative aspect-[282/211] w-full">
             <KpiCardSvg />
           </div>
         </div>
-        <div className="relative mx-auto w-full max-w-[420px] overflow-hidden rounded-[12px] sm:max-w-none lg:mx-0 lg:max-w-none lg:rounded-none">
+        <div className="relative mx-auto w-full max-w-[420px] overflow-hidden rounded-[12px] sm:mx-0 sm:max-w-none lg:rounded-none">
           <div className="relative aspect-[282/217] w-full">
             <KpiCard2Svg />
           </div>
         </div>
-        <div className="relative mx-auto w-full max-w-[420px] overflow-hidden rounded-[12px] sm:max-w-none lg:mx-0 lg:max-w-none lg:rounded-none">
+        <div className="relative mx-auto w-full max-w-[420px] overflow-hidden rounded-[12px] sm:mx-0 sm:max-w-none lg:rounded-none">
           <div className="relative aspect-[282/219] w-full">
             <KpiCard3Svg />
           </div>
         </div>
-        <div className="relative mx-auto w-full max-w-[420px] overflow-hidden rounded-[12px] sm:max-w-none lg:mx-0 lg:max-w-none lg:rounded-none">
+        <div className="relative mx-auto w-full max-w-[420px] overflow-hidden rounded-[12px] sm:mx-0 sm:max-w-none lg:rounded-none">
           <div className="relative aspect-[282/214] w-full">
             <KpiCard4Svg />
           </div>

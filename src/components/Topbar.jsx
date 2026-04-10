@@ -19,24 +19,14 @@ export default function Topbar({ title, subtitle, onOpenSidebar }) {
             <Search className="pointer-events-none absolute left-4 top-1/2 h-[18px] w-[18px] -translate-y-1/2 text-[var(--figma-text)]" />
             <input
               placeholder="SEARCH RECORDS..."
-              className="h-[35px] w-full rounded-full border border-transparent bg-white pl-11 pr-4 text-[12px] font-medium tracking-wide text-[var(--figma-text)] placeholder:font-medium placeholder:tracking-wide placeholder:text-[rgba(71,69,81,0.5)] focus:outline-none focus:ring-2 focus:ring-[rgba(27,20,100,0.14)]"
+              className="h-[35px] w-full rounded border border-transparent bg-white pl-11 pr-4 text-[12px] font-medium tracking-wide text-[var(--figma-text)] placeholder:font-medium placeholder:tracking-wide placeholder:text-[rgba(71,69,81,0.5)] focus:outline-none focus:ring-2 focus:ring-[rgba(27,20,100,0.14)]"
             />
           </div>
 
-          <div className="hidden flex-1 items-center gap-6 lg:ml-4 lg:flex lg:justify-start">
-            <button
-              type="button"
-              className="relative text-xs font-semibold tracking-wide text-[var(--figma-text-strong)]"
-            >
-              OVERVIEW
-              <span className="absolute -bottom-2 left-0 h-[2px] w-full bg-[var(--figma-brand)]" />
-            </button>
-            <button
-              type="button"
-              className="text-xs font-semibold tracking-wide text-[var(--figma-text-muted)] hover:text-[var(--figma-text)]"
-            >
-              LOGS
-            </button>
+          <div className="hidden flex-1 items-center lg:ml-4 lg:flex lg:justify-start">
+            <span className="relative text-xs font-semibold tracking-wide text-[var(--figma-text-strong)]">
+                 <span className="absolute -bottom-2 left-0 h-[2px] w-full bg-[var(--figma-brand)]" />
+            </span>
           </div>
 
           <div className="flex items-center gap-2">

@@ -2,18 +2,7 @@ import { Lock, Mail } from 'lucide-react'
 import { Link, useNavigate } from 'react-router-dom'
 import { useEffect, useState } from 'react'
 import { isAuthed, setAuthed } from '../auth/auth'
-
-function BankMark() {
-  return (
-    <svg width="64" height="53" viewBox="0 0 64 53" fill="none" xmlns="http://www.w3.org/2000/svg">
-      <rect width="64" height="53" rx="12" fill="var(--figma-brand)" />
-      <path
-        d="M23.25 34V25.25H25.75V34H23.25ZM30.75 34V25.25H33.25V34H30.75ZM19.5 39V36.5H44.5V39H19.5ZM38.25 34V25.25H40.75V34H38.25ZM19.5 22.75V20.25L32 14L44.5 20.25V22.75H19.5Z"
-        fill="white"
-      />
-    </svg>
-  )
-}
+import AppLogo from '../components/AppLogo'
 
 export default function Login() {
   const navigate = useNavigate()
@@ -50,16 +39,15 @@ export default function Login() {
         <div className="absolute -left-24 bottom-[-220px] h-[518px] w-[384px] rounded-[192px] bg-[rgba(227,226,224,0.3)] blur-[32px]" />
       </div>
 
-      <div className="relative mx-auto flex min-h-dvh w-full max-w-[1280px] items-center justify-center p-4 sm:p-6">
-        {/* Main white canvas */}
-        <div className="app-canvas w-full max-w-[1280px] px-4 py-12 sm:px-6 lg:px-10">
+      <div className="relative mx-auto flex min-h-dvh w-full max-w-[540px] items-center justify-center p-4 sm:p-6">
+        {/* Main white canvas — narrow card aligned with form column */}
+        <div className="app-canvas w-full max-w-[480px] px-4 py-6 sm:max-w-[500px] sm:px-6 sm:py-8">
           <div className="mx-auto flex w-full max-w-[440px] flex-col items-center">
-            <div className="mb-8 flex flex-col items-center text-center">
-              <div className="drop-shadow-[0_12px_16px_rgba(27,20,100,0.06)]">
-                <BankMark />
+            <div className="mb-5 flex flex-col items-center text-center leading-none">
+              <AppLogo className="mx-auto h-28 w-auto max-w-[min(100%,440px)] object-contain object-center sm:h-32 md:h-36" />
+              <div className="mt-1 text-[12px] leading-snug text-[var(--figma-text-muted)]">
+                Practitioner Marketplace Portal
               </div>
-              <div className="mt-6 text-[18px] font-semibold text-[var(--figma-text-strong)]">Akash Admin</div>
-              <div className="mt-1 text-[12px] text-[var(--figma-text-muted)]">Practitioner Marketplace Portal</div>
             </div>
 
             {/* Login card */}
@@ -122,7 +110,7 @@ export default function Login() {
               </form>
             </div>
 
-            <div className="mt-8 flex items-center justify-center gap-5 text-xs text-[var(--figma-text-muted)]">
+            <div className="mt-6 flex items-center justify-center gap-5 text-xs text-[var(--figma-text-muted)]">
               <Link className="hover:text-[var(--figma-text)] hover:underline" to="/login">
                 PRIVACY POLICY
               </Link>

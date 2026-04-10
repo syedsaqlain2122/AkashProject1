@@ -25,9 +25,13 @@ export default function AppShell() {
     return hit ?? { title: 'My Portal', subtitle: '' }
   }, [location.pathname])
 
+  const isDashboard = location.pathname === '/dashboard'
+
   return (
     <div className="min-h-dvh bg-[var(--figma-app-bg)] text-[var(--figma-text)]">
-      <div className="mx-auto min-h-dvh w-full max-w-[1280px] p-4 sm:p-6">
+      <div
+        className={`mx-auto min-h-dvh w-full p-4 sm:p-6 ${isDashboard ? 'max-w-none' : 'max-w-[1280px]'}`}
+      >
         <div className="app-canvas flex min-h-[calc(100dvh-32px)] overflow-hidden sm:min-h-[calc(100dvh-48px)]">
           <Sidebar mobileOpen={mobileSidebarOpen} onMobileClose={() => setMobileSidebarOpen(false)} />
 
