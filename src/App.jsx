@@ -13,6 +13,7 @@ import Sessions from './pages/Sessions'
 import SessionDetail from './pages/SessionDetail'
 import Disputes from './pages/Disputes'
 import Revenue from './pages/Revenue'
+import Analytics from './pages/Analytics'
 import Transactions from './pages/Transactions'
 import Payouts from './pages/Payouts'
 import Wallet from './pages/Wallet'
@@ -41,6 +42,7 @@ function App() {
             <Route path="/sessions/:id" element={<SessionDetail />} />
             <Route path="/disputes" element={<Disputes />} />
             <Route path="/revenue" element={<Revenue />} />
+            <Route path="/analytics" element={<Analytics />} />
             <Route path="/transactions" element={<Transactions />} />
             <Route path="/payouts" element={<Payouts />} />
             <Route path="/wallet" element={<Wallet />} />

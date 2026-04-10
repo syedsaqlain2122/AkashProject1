@@ -1,8 +1,9 @@
 import { NavLink, useNavigate } from 'react-router-dom'
 import {
-  BarChart3,
   Bell,
   CalendarDays,
+  ChartColumn,
+  CircleDollarSign,
   CreditCard,
   HandCoins,
   Layers,
@@ -27,7 +28,8 @@ const nav = [
   { to: '/modalities', label: 'Modalities', icon: Layers },
   { to: '/sessions', label: 'Sessions', icon: CalendarDays },
   { to: '/disputes', label: 'Disputes', icon: Scale },
-  { to: '/revenue', label: 'Revenue', icon: BarChart3 },
+  { to: '/revenue', label: 'Revenue', icon: CircleDollarSign },
+  { to: '/analytics', label: 'Analytics', icon: ChartColumn },
   { to: '/transactions', label: 'Transactions', icon: CreditCard },
   { to: '/payouts', label: 'Payouts', icon: HandCoins },
   { to: '/wallet', label: 'Wallet', icon: Wallet },

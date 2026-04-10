@@ -87,6 +87,15 @@ const PAGE_META = [
     actions: null,
   },
   {
+    path: '/analytics',
+    title: 'Marketplace Intelligence',
+    subtitle: 'Comprehensive analysis of modality shifts and practitioner performance across 24 regions.',
+    actions: {
+      secondary: { label: 'Export Ledger', icon: 'download' },
+      primary: { label: 'Generate Report', icon: 'plus' },
+    },
+  },
+  {
     path: '/transactions',
     title: 'Financial Ledger',
     subtitle: 'Individual transactions, payouts, refunds, and settlement status.',
@@ -175,6 +184,8 @@ export default function AppShell() {
         ? 'Search disputes…'
       : location.pathname === '/notifications'
         ? 'Search notification records…'
+      : location.pathname === '/analytics'
+        ? 'Search system logs…'
       : location.pathname === '/revenue' || location.pathname === '/transactions'
         ? 'Search transactions, payouts, or reports…'
       : location.pathname === '/payouts'
