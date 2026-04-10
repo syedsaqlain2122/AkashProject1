@@ -64,6 +64,8 @@ const PAGE_META = [
     subtitle: '',
     actions: null,
   },
+  { path: '/modalities', title: 'Modalities', subtitle: 'Session types and marketplace categories.' },
+  { path: '/disputes', title: 'Disputes', subtitle: 'Escalations, chargebacks, and resolution tracking.' },
   {
     path: '/revenue',
     title: '',
@@ -95,6 +97,15 @@ const PAGE_META = [
     actions: {
       secondary: { label: 'Export Statement', icon: 'download', variant: 'outline' },
       primary: { label: 'Initiate Payout', icon: 'plus' },
+    },
+  },
+  {
+    path: '/reviews',
+    title: 'Review Management',
+    subtitle: 'Moderate ratings, resolve flags, and enforce publication policy.',
+    actions: {
+      secondary: { label: 'Export Ledger', icon: 'download' },
+      primary: { label: 'Manual Entry', icon: 'plus' },
     },
   },
   { path: '/notifications', title: 'Notifications', subtitle: 'System and user notifications.' },
@@ -136,12 +147,18 @@ export default function AppShell() {
       ? 'Search sessions, users, or transactions…'
     : location.pathname === '/clients' || /^\/clients\/.+/.test(location.pathname)
       ? 'Search practitioners, clients, or transactions…'
+      : location.pathname === '/modalities'
+        ? 'Search modalities…'
+      : location.pathname === '/disputes'
+        ? 'Search disputes…'
       : location.pathname === '/revenue' || location.pathname === '/transactions'
         ? 'Search transactions, payouts, or reports…'
       : location.pathname === '/payouts'
         ? 'Search payouts or practitioners…'
       : location.pathname === '/wallet'
         ? 'Search wallet movements…'
+      : location.pathname === '/reviews'
+        ? 'Search reviews, clients or practitioners…'
         : 'SEARCH RECORDS...'
 
   return (
