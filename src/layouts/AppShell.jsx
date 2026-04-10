@@ -64,8 +64,22 @@ const PAGE_META = [
     subtitle: '',
     actions: null,
   },
-  { path: '/modalities', title: 'Modalities', subtitle: 'Session types and marketplace categories.' },
-  { path: '/disputes', title: 'Disputes', subtitle: 'Escalations, chargebacks, and resolution tracking.' },
+  {
+    path: '/modalities',
+    title: 'Modalities Management',
+    subtitle: 'Govern disciplines, demand cycles, and practitioner density.',
+    actions: {
+      primary: { label: 'Add New Modality', icon: 'plus' },
+    },
+  },
+  {
+    path: '/disputes',
+    title: 'Disputes Management',
+    subtitle: 'Review and resolve transactional and session conflicts.',
+    actions: {
+      secondary: { label: 'Export CSV', icon: 'download' },
+    },
+  },
   {
     path: '/revenue',
     title: '',
@@ -108,7 +122,15 @@ const PAGE_META = [
       primary: { label: 'Manual Entry', icon: 'plus' },
     },
   },
-  { path: '/notifications', title: 'Notifications', subtitle: 'System and user notifications.' },
+  {
+    path: '/notifications',
+    title: 'Notification Logs',
+    subtitle: 'Monitor SMS, Email, and Push delivery for all user activities.',
+    actions: {
+      secondary: { label: 'Export Logs', icon: 'download', variant: 'outline' },
+      primary: { label: 'Live Refresh', icon: 'refresh' },
+    },
+  },
   { path: '/users', title: 'Users', subtitle: 'Manage users and roles.' },
   { path: '/settings', title: 'Settings', subtitle: 'Update your account preferences.' },
 ]
@@ -151,6 +173,8 @@ export default function AppShell() {
         ? 'Search modalities…'
       : location.pathname === '/disputes'
         ? 'Search disputes…'
+      : location.pathname === '/notifications'
+        ? 'Search notification records…'
       : location.pathname === '/revenue' || location.pathname === '/transactions'
         ? 'Search transactions, payouts, or reports…'
       : location.pathname === '/payouts'
