@@ -34,7 +34,21 @@ const PAGE_META = [
     subtitle: '',
     actions: null,
   },
-  { path: '/clients', title: 'Clients', subtitle: 'View client accounts and activity.' },
+  {
+    path: '/clients',
+    title: 'Clients',
+    subtitle: 'Manage and monitor client engagement across the platform.',
+    actions: {
+      secondary: { label: 'Export CSV', icon: 'download' },
+      primary: { label: 'Register New Client', icon: 'plus' },
+    },
+  },
+  {
+    path: '/clients/:id',
+    title: '',
+    subtitle: '',
+    actions: null,
+  },
   { path: '/sessions', title: 'Sessions', subtitle: 'Monitor sessions and scheduling.' },
   { path: '/revenue', title: 'Revenue', subtitle: 'Review revenue performance and trends.' },
   { path: '/transactions', title: 'Transactions', subtitle: 'Track payments and transaction history.' },
@@ -53,6 +67,10 @@ export default function AppShell() {
     const direct = PAGE_META.find((m) => m.path === pathname)
     if (direct) return direct
 
+    if (/^\/clients\/[^/]+$/.test(pathname) && pathname !== '/clients') {
+      return PAGE_META.find((m) => m.path === '/clients/:id') ?? { title: '', subtitle: '', actions: null }
+    }
+
     if (/^\/practitioners\/[^/]+\/verification$/.test(pathname)) {
       return PAGE_META.find((m) => m.path === '/practitioners/:id/verification') ?? { title: '', subtitle: '', actions: null }
     }
@@ -66,7 +84,9 @@ export default function AppShell() {
 
   const searchPlaceholder = /^\/practitioners\/[^/]+\/verification$/.test(location.pathname)
     ? 'Search practitioners…'
-    : 'SEARCH RECORDS...'
+    : location.pathname === '/clients' || /^\/clients\/.+/.test(location.pathname)
+      ? 'Search practitioners, clients, or transactions…'
+      : 'SEARCH RECORDS...'
 
   return (
     <div className="min-h-dvh bg-[var(--figma-app-bg)] text-[var(--figma-text)]">
