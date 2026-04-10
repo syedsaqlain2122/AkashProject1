@@ -20,7 +20,7 @@ export default function Topbar({ title, subtitle, onOpenSidebar, actions, search
             <Menu className="h-5 w-5" />
           </button>
 
-          <div className="relative w-full flex-1 sm:max-w-[256px] sm:flex-none">
+          <div className="relative w-full min-w-0 flex-1 sm:max-w-md lg:max-w-xl xl:max-w-2xl">
             <Search className="pointer-events-none absolute left-4 top-1/2 h-[18px] w-[18px] -translate-y-1/2 text-[var(--figma-text)]" />
             <input
               placeholder={searchPlaceholder}

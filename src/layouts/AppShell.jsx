@@ -198,9 +198,7 @@ export default function AppShell() {
 
   return (
     <div className="min-h-dvh bg-[var(--figma-app-bg)] text-[var(--figma-text)]">
-      <div
-        className="mx-auto min-h-dvh w-full max-w-[1280px] p-4 sm:p-6"
-      >
+      <div className="min-h-dvh w-full max-w-none p-3 sm:p-4 lg:p-6">
         <div className="app-canvas flex min-h-[calc(100dvh-32px)] overflow-hidden sm:min-h-[calc(100dvh-48px)]">
           <Sidebar mobileOpen={mobileSidebarOpen} onMobileClose={() => setMobileSidebarOpen(false)} />
 
