@@ -1,6 +1,10 @@
-import { Bell, CircleHelp, Menu, Search } from 'lucide-react'
+import { Bell, CircleHelp, Download, Menu, Plus, Search } from 'lucide-react'
 
-export default function Topbar({ title, subtitle, onOpenSidebar }) {
+export default function Topbar({ title, subtitle, onOpenSidebar, actions }) {
+  const secondary = actions?.secondary
+  const primary = actions?.primary
+  const hasHeading = Boolean(title) || Boolean(subtitle)
+
   return (
     <header className="sticky top-0 z-30 border-b border-[var(--figma-stroke)] bg-white/90 backdrop-blur">
       <div className="px-4 py-4 sm:px-6 lg:px-8">
@@ -48,47 +52,66 @@ export default function Topbar({ title, subtitle, onOpenSidebar }) {
         </div>
 
         {/* Row 2: title + actions */}
-        <div className="mt-6 flex items-start justify-between gap-4">
-          <div className="min-w-0">
-            <div className="truncate text-lg font-semibold text-[var(--figma-text-strong)] sm:text-xl">{title}</div>
-            {subtitle ? (
-              <div className="mt-0.5 line-clamp-1 text-sm text-[var(--figma-text-muted)]">{subtitle}</div>
-            ) : null}
-          </div>
+        <div
+          className={[
+            'mt-6 flex items-start gap-4',
+            hasHeading ? 'justify-between' : 'justify-end',
+          ].join(' ')}
+        >
+          {hasHeading ? (
+            <div className="min-w-0">
+              {title ? (
+                <div className="truncate text-lg font-semibold text-[var(--figma-text-strong)] sm:text-xl">{title}</div>
+              ) : null}
+              {subtitle ? (
+                <div className="mt-0.5 line-clamp-1 text-sm text-[var(--figma-text-muted)]">{subtitle}</div>
+              ) : null}
+            </div>
+          ) : null}
 
           <div className="hidden items-center gap-2 sm:flex">
-            <button
-              type="button"
-              className="inline-flex h-10 items-center justify-center rounded-[8px] bg-[#E3E2E0] px-4 text-[11px] font-semibold tracking-[0.14em] text-[#1A1C1B] hover:brightness-[0.98]"
-            >
-              EXPORT REPORT
-            </button>
-            <button
-              type="button"
-              className="inline-flex h-10 items-center justify-center gap-2 rounded-[8px] bg-[var(--figma-brand)] px-4 text-[11px] font-semibold tracking-[0.14em] text-white shadow-[0_1px_2px_rgba(0,0,0,0.05)] hover:brightness-[0.98]"
-            >
-              <span aria-hidden className="relative -top-[0.5px] inline-block h-[10px] w-[10px]">
-                <span className="absolute left-1/2 top-0 h-full w-[2px] -translate-x-1/2 rounded-full bg-white" />
-                <span className="absolute top-1/2 left-0 h-[2px] w-full -translate-y-1/2 rounded-full bg-white" />
-              </span>
-              NEW ENTRY
-            </button>
+            {secondary ? (
+              <button
+                type="button"
+                onClick={secondary.onClick}
+                className="inline-flex h-10 items-center justify-center gap-2 rounded-[8px] bg-[#E3E2E0] px-4 text-[11px] font-semibold tracking-[0.14em] text-[#1A1C1B] hover:brightness-[0.98]"
+              >
+                {secondary.icon === 'download' ? <Download className="h-4 w-4" /> : null}
+                {secondary.label}
+              </button>
+            ) : null}
+            {primary ? (
+              <button
+                type="button"
+                onClick={primary.onClick}
+                className="inline-flex h-10 items-center justify-center gap-2 rounded-[8px] bg-[var(--figma-brand)] px-4 text-[11px] font-semibold tracking-[0.14em] text-white shadow-[0_1px_2px_rgba(0,0,0,0.05)] hover:brightness-[0.98]"
+              >
+                {primary.icon === 'plus' ? <Plus className="h-4 w-4" /> : null}
+                {primary.label}
+              </button>
+            ) : null}
           </div>
         </div>
 
         <div className="mt-3 flex items-center gap-2 sm:hidden">
-          <button
-            type="button"
-            className="flex-1 rounded-[8px] bg-[#E3E2E0] px-4 py-2 text-[11px] font-semibold tracking-[0.14em] text-[#1A1C1B]"
-          >
-            EXPORT REPORT
-          </button>
-          <button
-            type="button"
-            className="flex-1 rounded-[8px] bg-[var(--figma-brand)] px-4 py-2 text-[11px] font-semibold tracking-[0.14em] text-white"
-          >
-            NEW ENTRY
-          </button>
+          {secondary ? (
+            <button
+              type="button"
+              onClick={secondary.onClick}
+              className="flex-1 rounded-[8px] bg-[#E3E2E0] px-4 py-2 text-[11px] font-semibold tracking-[0.14em] text-[#1A1C1B]"
+            >
+              {secondary.label}
+            </button>
+          ) : null}
+          {primary ? (
+            <button
+              type="button"
+              onClick={primary.onClick}
+              className="flex-1 rounded-[8px] bg-[var(--figma-brand)] px-4 py-2 text-[11px] font-semibold tracking-[0.14em] text-white"
+            >
+              {primary.label}
+            </button>
+          ) : null}
         </div>
       </div>
     </header>

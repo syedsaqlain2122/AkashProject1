@@ -4,6 +4,7 @@ import AppShell from './layouts/AppShell'
 import Login from './pages/Login'
 import Dashboard from './pages/Dashboard'
 import Practitioners from './pages/Practitioners'
+import PractitionerDetail from './pages/PractitionerDetail'
 import Clients from './pages/Clients'
 import Sessions from './pages/Sessions'
 import Revenue from './pages/Revenue'
@@ -24,6 +25,7 @@ function App() {
           <Route element={<AppShell />}>
             <Route path="/dashboard" element={<Dashboard />} />
             <Route path="/practitioners" element={<Practitioners />} />
+            <Route path="/practitioners/:id" element={<PractitionerDetail />} />
             <Route path="/clients" element={<Clients />} />
             <Route path="/sessions" element={<Sessions />} />
             <Route path="/revenue" element={<Revenue />} />

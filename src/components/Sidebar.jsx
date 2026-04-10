@@ -43,16 +43,25 @@ function Item({ to, label, icon: Icon, disabled }) {
       to={to}
       className={({ isActive }) =>
         [
-          'flex items-center gap-3 rounded-[10px] px-3 py-2 text-sm transition',
+          'relative flex items-center gap-3 rounded-[10px] px-3 py-2 text-sm transition',
           isActive
-            ? 'bg-[var(--figma-input-bg)] text-[var(--figma-text-strong)]'
+            ? 'bg-[var(--figma-input-bg)] font-semibold text-[var(--figma-text-strong)] ring-1 ring-[var(--figma-stroke)] before:absolute before:left-0 before:top-1/2 before:h-5 before:w-1 before:-translate-y-1/2 before:rounded-r before:bg-[var(--figma-brand)]'
             : 'text-[var(--figma-text)] hover:bg-[var(--figma-input-bg)]',
         ].join(' ')
       }
       end={to === '/dashboard'}
     >
-      <Icon className="h-4 w-4 text-[var(--figma-brand)]" />
-      <span>{label}</span>
+      {({ isActive }) => (
+        <>
+          <Icon
+            className={[
+              'h-4 w-4',
+              isActive ? 'text-[var(--figma-brand)]' : 'text-[var(--figma-text-muted)]',
+            ].join(' ')}
+          />
+          <span>{label}</span>
+        </>
+      )}
     </NavLink>
   )
 }
