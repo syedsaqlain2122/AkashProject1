@@ -19,7 +19,7 @@ export default function Login() {
     setError('')
 
     const ok =
-      email.trim().toLowerCase() === 'syedsaqlain491@gmail.com' && password === '123456'
+      email.trim().toLowerCase() === 'akash@gmail.com' && password === '123456'
 
     if (!ok) {
       setAuthed(false)
@@ -59,7 +59,7 @@ export default function Login() {
                     <Mail className="pointer-events-none absolute left-4 top-1/2 h-4 w-4 -translate-y-1/2 text-[var(--figma-text-muted)]/70" />
                     <input
                       className="figma-input w-full pl-11 pr-4 text-sm text-[var(--figma-text)] placeholder:text-[var(--figma-text-muted)]/60"
-                      placeholder="syedsaqlain491@gmail.com"
+                      placeholder="akash@gmail.com"
                       type="email"
                       autoComplete="email"
                       value={email}
