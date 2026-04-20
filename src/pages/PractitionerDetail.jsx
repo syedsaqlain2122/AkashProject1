@@ -94,12 +94,6 @@ export default function PractitionerDetail() {
           >
             EDIT PROFILE
           </button>
-          <button
-            type="button"
-            className="flex-1 sm:flex-none inline-flex h-10 items-center justify-center rounded-[10px] bg-[var(--figma-brand)] px-4 text-[11px] font-semibold tracking-[0.14em] text-white shadow-[0_1px_2px_rgba(0,0,0,0.05)] hover:brightness-[0.98]"
-          >
-            APPROVE CHANGES
-          </button>
         </div>
       </div>
 

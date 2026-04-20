@@ -87,7 +87,7 @@ function Dashboard() {
         <div className="lg:col-span-4">
           <div className="figma-card rounded-[12px] p-5 sm:p-6">
             <div className="flex items-center justify-between">
-              <div className="text-sm font-semibold text-[var(--figma-text-strong)]">Pending Approvals</div>
+              <div className="text-sm font-semibold text-[var(--figma-text-strong)]">New Joinings</div>
               <span className="rounded-full bg-rose-50 px-2 py-1 text-[11px] font-semibold text-rose-700">3</span>
             </div>
             <div className="mt-4 space-y-3">

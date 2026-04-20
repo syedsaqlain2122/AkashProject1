@@ -1,6 +1,8 @@
 import { Bell, CircleHelp, Download, Menu, Plus, RefreshCw, Search } from 'lucide-react'
+import { useNavigate } from 'react-router-dom'
 
 export default function Topbar({ title, subtitle, onOpenSidebar, actions, searchPlaceholder = 'SEARCH RECORDS...' }) {
+  const navigate = useNavigate()
   const secondary = actions?.secondary
   const primary = actions?.primary
   const hasHeading = Boolean(title) || Boolean(subtitle)
@@ -39,6 +41,7 @@ export default function Topbar({ title, subtitle, onOpenSidebar, actions, search
               type="button"
               className="grid h-10 w-10 place-items-center rounded-[10px] border border-[var(--figma-stroke)] bg-white text-[var(--figma-text)] hover:bg-[rgba(244,243,241,0.7)]"
               aria-label="Notifications"
+              onClick={() => navigate('/notifications')}
             >
               <Bell className="h-5 w-5" />
             </button>

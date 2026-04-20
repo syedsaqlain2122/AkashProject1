@@ -19,7 +19,6 @@ const PAGE_META = [
     subtitle: 'Monitor and manage all practitioners in the Akash network.',
     actions: {
       secondary: { label: 'Export CSV', icon: 'download' },
-      primary: { label: 'Onboard Practitioner', icon: 'plus' },
     },
   },
   {
@@ -40,7 +39,6 @@ const PAGE_META = [
     subtitle: 'Manage and monitor client engagement across the platform.',
     actions: {
       secondary: { label: 'Export CSV', icon: 'download' },
-      primary: { label: 'Register New Client', icon: 'plus' },
     },
   },
   {
