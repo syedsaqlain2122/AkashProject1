@@ -10,7 +10,7 @@ const approvals = [
   { name: 'Marcus Sterling', specialization: 'Meditation & Breathwork', time: '5h ago' },
   { name: 'Sarah Chen', specialization: 'Nutrition & Lifestyle', time: '1d ago' },
   { name: 'Dr. Emma Reed', specialization: 'Trauma-informed Therapy', time: '2h ago' },
- 
+
 ]
 
 const transactions = [
@@ -49,10 +49,10 @@ function Dashboard() {
         ))}
       </section>
 
-      <section className="grid grid-cols-1 gap-6 lg:grid-cols-12">
+      <section className="grid grid-cols-1 gap-6 lg:grid-cols-12 lg:items-stretch">
         {/* Revenue flow */}
-        <div className="lg:col-span-8">
-          <div className="figma-card rounded-[12px] p-5 sm:p-6">
+        <div className="lg:col-span-8 h-full">
+          <div className="figma-card h-full rounded-[12px] p-5 sm:p-6">
             <div className="flex items-center justify-between gap-3">
               <div>
                 <div className="text-sm font-semibold text-[var(--figma-text-strong)]">Monthly Revenue Flow</div>
@@ -90,7 +90,6 @@ function Dashboard() {
           <div className="figma-card rounded-[12px] p-5 sm:p-6 lg:min-h-[360px]">
             <div className="flex items-center justify-between">
               <div className="text-sm font-semibold text-[var(--figma-text-strong)]">New Joinings</div>
-              <span className="rounded-full bg-rose-50 px-2 py-1 text-[11px] font-semibold text-rose-700">3</span>
             </div>
             <div className="mt-4 space-y-3">
               {approvals.map((a) => (
