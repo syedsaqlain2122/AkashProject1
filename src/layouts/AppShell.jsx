@@ -10,7 +10,6 @@ const PAGE_META = [
     subtitle: 'Track key performance metrics and practitioner earnings.',
     actions: {
       secondary: { label: 'EXPORT REPORT', icon: 'download' },
-      primary: { label: 'NEW ENTRY', icon: 'plus' },
     },
   },
   {
@@ -71,27 +70,10 @@ const PAGE_META = [
     },
   },
   {
-    path: '/disputes',
-    title: 'Disputes Management',
-    subtitle: 'Review and resolve transactional and session conflicts.',
-    actions: {
-      secondary: { label: 'Export CSV', icon: 'download' },
-    },
-  },
-  {
     path: '/revenue',
     title: '',
     subtitle: '',
     actions: null,
-  },
-  {
-    path: '/analytics',
-    title: 'Marketplace Intelligence',
-    subtitle: 'Comprehensive analysis of modality shifts and practitioner performance across 24 regions.',
-    actions: {
-      secondary: { label: 'Export Ledger', icon: 'download' },
-      primary: { label: 'Generate Report', icon: 'plus' },
-    },
   },
   {
     path: '/transactions',
@@ -178,12 +160,8 @@ export default function AppShell() {
       ? 'Search practitioners, clients, or transactions…'
       : location.pathname === '/modalities'
         ? 'Search modalities…'
-      : location.pathname === '/disputes'
-        ? 'Search disputes…'
       : location.pathname === '/notifications'
         ? 'Search notification records…'
-      : location.pathname === '/analytics'
-        ? 'Search system logs…'
       : location.pathname === '/revenue' || location.pathname === '/transactions'
         ? 'Search transactions, payouts, or reports…'
       : location.pathname === '/payouts'

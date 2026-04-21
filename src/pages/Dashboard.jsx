@@ -6,9 +6,11 @@ const stats = [
 ]
 
 const approvals = [
-  { name: 'Dr. Emma Reed', role: 'Pending approval', time: '2h ago' },
-  { name: 'Marcus Sterling', role: 'Pending approval', time: '5h ago' },
-  { name: 'Sarah Chen', role: 'Pending approval', time: '1d ago' },
+  { name: 'Dr. Emma Reed', specialization: 'Trauma-informed Therapy', time: '2h ago' },
+  { name: 'Marcus Sterling', specialization: 'Meditation & Breathwork', time: '5h ago' },
+  { name: 'Sarah Chen', specialization: 'Nutrition & Lifestyle', time: '1d ago' },
+  { name: 'Dr. Emma Reed', specialization: 'Trauma-informed Therapy', time: '2h ago' },
+ 
 ]
 
 const transactions = [
@@ -85,7 +87,7 @@ function Dashboard() {
 
         {/* Approvals */}
         <div className="lg:col-span-4">
-          <div className="figma-card rounded-[12px] p-5 sm:p-6">
+          <div className="figma-card rounded-[12px] p-5 sm:p-6 lg:min-h-[360px]">
             <div className="flex items-center justify-between">
               <div className="text-sm font-semibold text-[var(--figma-text-strong)]">New Joinings</div>
               <span className="rounded-full bg-rose-50 px-2 py-1 text-[11px] font-semibold text-rose-700">3</span>
@@ -99,18 +101,12 @@ function Dashboard() {
                   <div className="h-9 w-9 rounded-full bg-[var(--figma-input-bg)]" />
                   <div className="min-w-0 flex-1">
                     <div className="truncate text-sm font-semibold text-[var(--figma-text-strong)]">{a.name}</div>
-                    <div className="text-xs text-[var(--figma-text-muted)]">{a.role}</div>
+                    <div className="mt-0.5 truncate text-xs text-[var(--figma-text-muted)]">{a.specialization}</div>
                   </div>
                   <div className="text-[11px] font-semibold text-[var(--figma-text-muted)]/70">{a.time}</div>
                 </div>
               ))}
             </div>
-            <button
-              type="button"
-              className="mt-4 w-full rounded-[10px] border border-[var(--figma-stroke)] bg-[var(--figma-input-bg)] px-3 py-2 text-xs font-semibold text-[var(--figma-text)] hover:brightness-[0.98]"
-            >
-              Manage approvals
-            </button>
           </div>
         </div>
       </section>
@@ -162,32 +158,6 @@ function Dashboard() {
           </div>
         </div>
 
-        {/* System integrity */}
-        <div className="lg:col-span-4">
-          <div className="rounded-[12px] bg-[var(--figma-brand)] p-[1px] shadow-[var(--figma-shadow-card)]">
-            <div className="rounded-[12px] bg-[var(--figma-brand)] p-5 text-white sm:p-6">
-              <div className="text-sm font-semibold">System Integrity</div>
-              <div className="mt-1 text-xs text-white/70">Uptime, response time, and service health</div>
-              <div className="mt-5 flex items-end justify-between">
-                <div>
-                  <div className="text-3xl font-semibold tracking-tight">99.98%</div>
-                  <div className="mt-1 text-xs text-white/70">Healthy status</div>
-                </div>
-                <div className="rounded-[10px] bg-white/10 px-3 py-2 text-xs font-semibold">Optimal</div>
-              </div>
-              <div className="mt-6 rounded-[12px] bg-white/10 p-4">
-                <div className="text-xs font-semibold text-white/80">Weekly sessions trend</div>
-                <div className="mt-3 grid grid-cols-7 items-end gap-2">
-                  {[20, 26, 24, 30, 38, 42, 46].map((h, idx) => (
-                    <div key={idx} className="w-full rounded-[10px] bg-white/20">
-                      <div className="w-full rounded-[10px] bg-white" style={{ height: `${h}px` }} />
-                    </div>
-                  ))}
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
       </section>
     </div>
   )
