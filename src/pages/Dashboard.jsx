@@ -6,9 +6,9 @@ const stats = [
 ]
 
 const approvals = [
-  { name: 'Dr. Emma Reed', role: 'Pending approval', time: '2h ago' },
-  { name: 'Marcus Sterling', role: 'Pending approval', time: '5h ago' },
-  { name: 'Sarah Chen', role: 'Pending approval', time: '1d ago' },
+  { name: 'Dr. Emma Reed', time: '2h ago' },
+  { name: 'Marcus Sterling', time: '5h ago' },
+  { name: 'Sarah Chen', time: '1d ago' },
 ]
 
 const transactions = [
@@ -88,7 +88,6 @@ function Dashboard() {
           <div className="figma-card rounded-[12px] p-5 sm:p-6">
             <div className="flex items-center justify-between">
               <div className="text-sm font-semibold text-[var(--figma-text-strong)]">New Joinings</div>
-              <span className="rounded-full bg-rose-50 px-2 py-1 text-[11px] font-semibold text-rose-700">3</span>
             </div>
             <div className="mt-4 space-y-3">
               {approvals.map((a) => (
@@ -99,18 +98,11 @@ function Dashboard() {
                   <div className="h-9 w-9 rounded-full bg-[var(--figma-input-bg)]" />
                   <div className="min-w-0 flex-1">
                     <div className="truncate text-sm font-semibold text-[var(--figma-text-strong)]">{a.name}</div>
-                    <div className="text-xs text-[var(--figma-text-muted)]">{a.role}</div>
                   </div>
                   <div className="text-[11px] font-semibold text-[var(--figma-text-muted)]/70">{a.time}</div>
                 </div>
               ))}
             </div>
-            <button
-              type="button"
-              className="mt-4 w-full rounded-[10px] border border-[var(--figma-stroke)] bg-[var(--figma-input-bg)] px-3 py-2 text-xs font-semibold text-[var(--figma-text)] hover:brightness-[0.98]"
-            >
-              Manage approvals
-            </button>
           </div>
         </div>
       </section>

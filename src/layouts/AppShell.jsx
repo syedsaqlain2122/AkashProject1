@@ -10,7 +10,6 @@ const PAGE_META = [
     subtitle: 'Track key performance metrics and practitioner earnings.',
     actions: {
       secondary: { label: 'EXPORT REPORT', icon: 'download' },
-      primary: { label: 'NEW ENTRY', icon: 'plus' },
     },
   },
   {
